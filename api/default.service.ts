@@ -35,6 +35,8 @@ import { GetInvoiceByIdV2200Response } from '../model/getInvoiceByIdV2200Respons
 // @ts-ignore
 import { GetInvoiceLineItemsByFilters200Response } from '../model/getInvoiceLineItemsByFilters200Response';
 // @ts-ignore
+import { GetLedgers200Response } from '../model/getLedgers200Response';
+// @ts-ignore
 import { InternalServerError500Response } from '../model/internalServerError500Response';
 // @ts-ignore
 import { UnauthorizedError401Response } from '../model/unauthorizedError401Response';
@@ -920,6 +922,84 @@ export class DefaultService {
 
         let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoices`;
         return this.httpClient.request<GetInvoiceByIdV2200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                params: localVarQueryParameters,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get ledgers.
+     * Get ledgers.
+     * @param orgId The Organization ID
+     * @param siteId The Site ID
+     * @param unitId The unit ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetLedgers200Response>;
+    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetLedgers200Response>>;
+    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetLedgers200Response>>;
+    public getLedgers(orgId: string, siteId: string, unitId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+        if (orgId === null || orgId === undefined) {
+            throw new Error('Required parameter orgId was null or undefined when calling getLedgers.');
+        }
+        if (siteId === null || siteId === undefined) {
+            throw new Error('Required parameter siteId was null or undefined when calling getLedgers.');
+        }
+
+        let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (unitId !== undefined && unitId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>unitId, 'unitId');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearer) required
+        localVarCredential = this.configuration.lookupCredential('bearer');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json;v=1'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ledgers`;
+        return this.httpClient.request<GetLedgers200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 params: localVarQueryParameters,
