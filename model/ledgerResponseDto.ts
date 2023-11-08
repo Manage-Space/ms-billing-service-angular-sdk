@@ -40,5 +40,9 @@ export interface LedgerResponseDto {
      * End date of the rental.
      */
     periodEnd: string | null;
+    /**
+     * Ledger balance.
+     */
+    balance: number;
 }
 
