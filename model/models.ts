@@ -22,6 +22,7 @@ export * from './invoiceResponseAddress';
 export * from './invoiceStatus';
 export * from './invoiceV2AddressResponse';
 export * from './invoiceV2LineItemResponse';
+export * from './invoiceV2LineItemResponseInvoice';
 export * from './invoiceV2Response';
 export * from './invoiceV2ResponseAddress';
 export * from './ledgerResponseDto';

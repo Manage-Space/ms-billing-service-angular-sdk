@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InvoiceV2LineItemResponseInvoice } from './invoiceV2LineItemResponseInvoice';
 
 
 export interface InvoiceV2LineItemResponse { 
@@ -56,6 +57,6 @@ export interface InvoiceV2LineItemResponse {
      * Ledger ID
      */
     ledgerId: string | null;
-    invoice: object | null;
+    invoice: InvoiceV2LineItemResponseInvoice | null;
 }
 

@@ -31,6 +31,7 @@ model/invoiceResponseAddress.ts
 model/invoiceStatus.ts
 model/invoiceV2AddressResponse.ts
 model/invoiceV2LineItemResponse.ts
+model/invoiceV2LineItemResponseInvoice.ts
 model/invoiceV2Response.ts
 model/invoiceV2ResponseAddress.ts
 model/ledgerResponseDto.ts
