@@ -73,6 +73,10 @@ export interface InvoiceV2Response {
      * Invoice period end date.
      */
     invoicePeriodEndDate: string | null;
+    /**
+     * Unpaid invoice line items
+     */
+    unpaid: Array<string> | null;
 }
 export namespace InvoiceV2Response {
 }
