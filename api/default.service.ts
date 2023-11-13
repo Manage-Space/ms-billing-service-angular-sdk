@@ -846,13 +846,14 @@ export class DefaultService {
      * @param dateFrom 
      * @param dateTo 
      * @param accountId Account Id
+     * @param rentalId Rental Id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceByIdV2200Response>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceByIdV2200Response>>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceByIdV2200Response>>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, rentalId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceByIdV2200Response>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, rentalId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceByIdV2200Response>>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, rentalId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceByIdV2200Response>>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, rentalId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getInvoicesV2.');
         }
@@ -880,6 +881,10 @@ export class DefaultService {
         if (accountId !== undefined && accountId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>accountId, 'accountId');
+        }
+        if (rentalId !== undefined && rentalId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>rentalId, 'rentalId');
         }
 
         let localVarHeaders = this.defaultHeaders;
