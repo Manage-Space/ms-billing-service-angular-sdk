@@ -26,5 +26,6 @@ export * from './invoiceV2LineItemResponseInvoice';
 export * from './invoiceV2Response';
 export * from './invoiceV2ResponseAddress';
 export * from './ledgerResponseDto';
+export * from './reducedInvoiceV2LineItem';
 export * from './unauthorizedError401Response';
 export * from './unauthorizedError401ResponseError';

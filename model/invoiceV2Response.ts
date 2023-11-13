@@ -9,9 +9,9 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { InvoiceV2LineItemResponse } from './invoiceV2LineItemResponse';
 import { InvoiceV2ResponseAddress } from './invoiceV2ResponseAddress';
 import { InvoiceStatus } from './invoiceStatus';
+import { ReducedInvoiceV2LineItem } from './reducedInvoiceV2LineItem';
 
 
 export interface InvoiceV2Response { 
@@ -55,7 +55,7 @@ export interface InvoiceV2Response {
     /**
      * Invoice line items.
      */
-    invoiceLineItems: Array<InvoiceV2LineItemResponse>;
+    invoiceLineItems: Array<ReducedInvoiceV2LineItem>;
     invoiceStatus: InvoiceStatus;
     /**
      * Created at.

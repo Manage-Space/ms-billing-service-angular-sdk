@@ -36,6 +36,7 @@ model/invoiceV2Response.ts
 model/invoiceV2ResponseAddress.ts
 model/ledgerResponseDto.ts
 model/models.ts
+model/reducedInvoiceV2LineItem.ts
 model/unauthorizedError401Response.ts
 model/unauthorizedError401ResponseError.ts
 ng-package.json
