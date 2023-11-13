@@ -57,6 +57,10 @@ export interface InvoiceV2LineItemResponse {
      * Ledger ID
      */
     ledgerId: string | null;
+    /**
+     * Tag.
+     */
+    tag: string;
     invoice: InvoiceV2LineItemResponseInvoice | null;
 }
 
