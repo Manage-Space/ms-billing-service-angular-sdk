@@ -665,13 +665,14 @@ export class DefaultService {
      * @param orgId The Organization ID
      * @param siteId The Site ID
      * @param accountId Account Id
+     * @param pending Indicates whether to filter for line items with or without an invoice. A true value retrieves line items without an invoice, while false retrieves line items with an invoice.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getInvoiceLineItemsByFilters.');
         }
@@ -683,6 +684,10 @@ export class DefaultService {
         if (accountId !== undefined && accountId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>accountId, 'accountId');
+        }
+        if (pending !== undefined && pending !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>pending, 'pending');
         }
 
         let localVarHeaders = this.defaultHeaders;
