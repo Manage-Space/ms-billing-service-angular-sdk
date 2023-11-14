@@ -664,15 +664,17 @@ export class DefaultService {
      * Get list of invoice line items with filters such as &#x60;siteId&#x60;; &#x60;accountId&#x60;, etc..
      * @param orgId The Organization ID
      * @param siteId The Site ID
+     * @param offset The offset of the first record to return (0-indexed).
+     * @param limit The maximum number of records to return per page.
      * @param accountId Account Id
      * @param pending Indicates whether to filter for line items with or without an invoice. A true value retrieves line items without an invoice, while false retrieves line items with an invoice.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
-    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, accountId?: string, pending?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, offset?: number, limit?: number, accountId?: string, pending?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, offset?: number, limit?: number, accountId?: string, pending?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, offset?: number, limit?: number, accountId?: string, pending?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
+    public getInvoiceLineItemsByFilters(orgId: string, siteId: string, offset?: number, limit?: number, accountId?: string, pending?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getInvoiceLineItemsByFilters.');
         }
@@ -681,6 +683,14 @@ export class DefaultService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (offset !== undefined && offset !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>offset, 'offset');
+        }
+        if (limit !== undefined && limit !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>limit, 'limit');
+        }
         if (accountId !== undefined && accountId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>accountId, 'accountId');
