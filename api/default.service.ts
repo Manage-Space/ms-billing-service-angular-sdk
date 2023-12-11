@@ -955,18 +955,95 @@ export class DefaultService {
     }
 
     /**
+     * Get ledger.
+     * Get ledger by id.
+     * @param orgId The Organization ID
+     * @param siteId The Site ID
+     * @param ledgerId The Ledger ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public getLedgerById(orgId: string, siteId: string, ledgerId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetLedgers200Response>;
+    public getLedgerById(orgId: string, siteId: string, ledgerId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetLedgers200Response>>;
+    public getLedgerById(orgId: string, siteId: string, ledgerId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetLedgers200Response>>;
+    public getLedgerById(orgId: string, siteId: string, ledgerId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+        if (orgId === null || orgId === undefined) {
+            throw new Error('Required parameter orgId was null or undefined when calling getLedgerById.');
+        }
+        if (siteId === null || siteId === undefined) {
+            throw new Error('Required parameter siteId was null or undefined when calling getLedgerById.');
+        }
+        if (ledgerId === null || ledgerId === undefined) {
+            throw new Error('Required parameter ledgerId was null or undefined when calling getLedgerById.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearer) required
+        localVarCredential = this.configuration.lookupCredential('bearer');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json;v=1'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/ledgers/${this.configuration.encodeParam({name: "ledgerId", value: ledgerId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.request<GetLedgers200Response>('get', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Get ledgers.
      * Get ledgers.
      * @param orgId The Organization ID
      * @param siteId The Site ID
-     * @param unitId The unit ID
+     * @param offset The offset of the first record to return (0-indexed).
+     * @param limit The maximum number of records to return per page.
+     * @param unitId Unit ID
+     * @param accountId Account ID
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetLedgers200Response>;
-    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetLedgers200Response>>;
-    public getLedgers(orgId: string, siteId: string, unitId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetLedgers200Response>>;
-    public getLedgers(orgId: string, siteId: string, unitId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getLedgers(orgId: string, siteId: string, offset?: number, limit?: number, unitId?: string, accountId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetLedgers200Response>;
+    public getLedgers(orgId: string, siteId: string, offset?: number, limit?: number, unitId?: string, accountId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetLedgers200Response>>;
+    public getLedgers(orgId: string, siteId: string, offset?: number, limit?: number, unitId?: string, accountId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetLedgers200Response>>;
+    public getLedgers(orgId: string, siteId: string, offset?: number, limit?: number, unitId?: string, accountId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getLedgers.');
         }
@@ -975,9 +1052,21 @@ export class DefaultService {
         }
 
         let localVarQueryParameters = new HttpParams({encoder: this.encoder});
+        if (offset !== undefined && offset !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>offset, 'offset');
+        }
+        if (limit !== undefined && limit !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>limit, 'limit');
+        }
         if (unitId !== undefined && unitId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>unitId, 'unitId');
+        }
+        if (accountId !== undefined && accountId !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>accountId, 'accountId');
         }
 
         let localVarHeaders = this.defaultHeaders;

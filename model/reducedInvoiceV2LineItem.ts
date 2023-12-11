@@ -57,6 +57,10 @@ export interface ReducedInvoiceV2LineItem {
      */
     ledgerId: string | null;
     /**
+     * Sub product ID
+     */
+    subProductId: string | null;
+    /**
      * Tag.
      */
     tag: string;

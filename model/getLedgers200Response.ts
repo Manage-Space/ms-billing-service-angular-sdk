@@ -9,11 +9,11 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { LedgerResponseDto } from './ledgerResponseDto';
+import { LedgerDetailsResponse } from './ledgerDetailsResponse';
 
 
 export interface GetLedgers200Response { 
-    data?: Array<LedgerResponseDto>;
+    data?: Array<LedgerDetailsResponse>;
     success?: boolean;
     error?: object;
 }
