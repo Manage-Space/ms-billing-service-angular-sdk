@@ -66,6 +66,10 @@ export interface LedgerDetailsResponse {
      */
     mobileNumber: string;
     /**
+     * Account ID
+     */
+    accountId: string;
+    /**
      * Transaction Summary.
      */
     transactionsSummary: Array<TransactionSummaryResponse>;
