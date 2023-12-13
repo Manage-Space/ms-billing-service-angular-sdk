@@ -17,6 +17,10 @@ export interface TransactionSummaryResponse {
      * Invoice ID.
      */
     invoiceId: string;
+    /**
+     * Sequential Invoice Number.
+     */
+    invoiceNumber: number;
     invoiceStatus: InvoiceStatus;
     /**
      * Invoice period end date.
