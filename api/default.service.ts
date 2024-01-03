@@ -37,6 +37,8 @@ import { GetLedgers200Response } from '../model/getLedgers200Response';
 // @ts-ignore
 import { InternalServerError500Response } from '../model/internalServerError500Response';
 // @ts-ignore
+import { InvoiceLineItemActionRequest } from '../model/invoiceLineItemActionRequest';
+// @ts-ignore
 import { UnauthorizedError401Response } from '../model/unauthorizedError401Response';
 
 // @ts-ignore
@@ -179,7 +181,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoice-line-items`;
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/invoice-line-items`;
         return this.httpClient.request<GetInvoiceLineItemsByFilters200Response>('post', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -574,7 +576,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoice-line-items/${this.configuration.encodeParam({name: "invoiceLineItemId", value: invoiceLineItemId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/invoice-line-items/${this.configuration.encodeParam({name: "invoiceLineItemId", value: invoiceLineItemId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
         return this.httpClient.request<GetInvoiceLineItemsByFilters200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -666,7 +668,7 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoice-line-items`;
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/invoice-line-items`;
         return this.httpClient.request<GetInvoiceLineItemsByFilters200Response>('get', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
@@ -951,26 +953,30 @@ export class DefaultService {
     }
 
     /**
-     * Create an invoice line item to waive a fee.
-     * create an invoice line item to waive a fee.
+     * Handle invoice line items.
+     * Handle invoice line items.
      * @param orgId The Organization ID
      * @param siteId The Site ID
-     * @param invoiceLineItemId Invoice Line Item ID
+     * @param invoiceId The Invoice ID
+     * @param invoiceLineItemActionRequest 
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public waiveInvoiceFee(orgId: string, siteId: string, invoiceLineItemId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
-    public waiveInvoiceFee(orgId: string, siteId: string, invoiceLineItemId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
-    public waiveInvoiceFee(orgId: string, siteId: string, invoiceLineItemId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
-    public waiveInvoiceFee(orgId: string, siteId: string, invoiceLineItemId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public handleInvoiceLineItemAction(orgId: string, siteId: string, invoiceId: string, invoiceLineItemActionRequest: InvoiceLineItemActionRequest, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceLineItemsByFilters200Response>;
+    public handleInvoiceLineItemAction(orgId: string, siteId: string, invoiceId: string, invoiceLineItemActionRequest: InvoiceLineItemActionRequest, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceLineItemsByFilters200Response>>;
+    public handleInvoiceLineItemAction(orgId: string, siteId: string, invoiceId: string, invoiceLineItemActionRequest: InvoiceLineItemActionRequest, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceLineItemsByFilters200Response>>;
+    public handleInvoiceLineItemAction(orgId: string, siteId: string, invoiceId: string, invoiceLineItemActionRequest: InvoiceLineItemActionRequest, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
-            throw new Error('Required parameter orgId was null or undefined when calling waiveInvoiceFee.');
+            throw new Error('Required parameter orgId was null or undefined when calling handleInvoiceLineItemAction.');
         }
         if (siteId === null || siteId === undefined) {
-            throw new Error('Required parameter siteId was null or undefined when calling waiveInvoiceFee.');
+            throw new Error('Required parameter siteId was null or undefined when calling handleInvoiceLineItemAction.');
         }
-        if (invoiceLineItemId === null || invoiceLineItemId === undefined) {
-            throw new Error('Required parameter invoiceLineItemId was null or undefined when calling waiveInvoiceFee.');
+        if (invoiceId === null || invoiceId === undefined) {
+            throw new Error('Required parameter invoiceId was null or undefined when calling handleInvoiceLineItemAction.');
+        }
+        if (invoiceLineItemActionRequest === null || invoiceLineItemActionRequest === undefined) {
+            throw new Error('Required parameter invoiceLineItemActionRequest was null or undefined when calling handleInvoiceLineItemAction.');
         }
 
         let localVarHeaders = this.defaultHeaders;
@@ -1000,6 +1006,15 @@ export class DefaultService {
         }
 
 
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Content-Type', httpContentTypeSelected);
+        }
+
         let responseType_: 'text' | 'json' | 'blob' = 'json';
         if (localVarHttpHeaderAcceptSelected) {
             if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
@@ -1011,10 +1026,11 @@ export class DefaultService {
             }
         }
 
-        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoice-line-items/${this.configuration.encodeParam({name: "invoiceLineItemId", value: invoiceLineItemId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
-        return this.httpClient.request<GetInvoiceLineItemsByFilters200Response>('post', `${this.configuration.basePath}${localVarPath}`,
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/invoice/${this.configuration.encodeParam({name: "invoiceId", value: invoiceId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: "uuid"})}/invoice-line-items`;
+        return this.httpClient.request<GetInvoiceLineItemsByFilters200Response>('put', `${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
+                body: invoiceLineItemActionRequest,
                 responseType: <any>responseType_,
                 withCredentials: this.configuration.withCredentials,
                 headers: localVarHeaders,

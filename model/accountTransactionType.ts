@@ -11,13 +11,14 @@
  */
 
 
-export type AccountTransactionType = 'charge' | 'fee' | 'payment' | 'refund' | 'waive';
+export type AccountTransactionType = 'charge' | 'fee' | 'payment' | 'refund' | 'waive' | 'credit';
 
 export const AccountTransactionType = {
     Charge: 'charge' as AccountTransactionType,
     Fee: 'fee' as AccountTransactionType,
     Payment: 'payment' as AccountTransactionType,
     Refund: 'refund' as AccountTransactionType,
-    Waive: 'waive' as AccountTransactionType
+    Waive: 'waive' as AccountTransactionType,
+    Credit: 'credit' as AccountTransactionType
 };
 

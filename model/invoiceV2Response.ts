@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { UnpaidWithBalance } from './unpaidWithBalance';
 import { InvoiceV2ResponseAddress } from './invoiceV2ResponseAddress';
 import { InvoiceStatus } from './invoiceStatus';
 import { ReducedInvoiceV2LineItem } from './reducedInvoiceV2LineItem';
@@ -77,6 +78,10 @@ export interface InvoiceV2Response {
      * Unpaid invoice line items
      */
     unpaid: Array<string> | null;
+    /**
+     * Unpaid invoice line items
+     */
+    unpaidWithBalance: Array<UnpaidWithBalance> | null;
 }
 export namespace InvoiceV2Response {
 }
