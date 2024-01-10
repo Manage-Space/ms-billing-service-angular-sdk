@@ -9,6 +9,7 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
+import { InvoiceLineItemAdjustmentResponse } from './invoiceLineItemAdjustmentResponse';
 
 
 export interface ReducedInvoiceV2LineItem { 
@@ -64,5 +65,9 @@ export interface ReducedInvoiceV2LineItem {
      * Tag.
      */
     tag: string;
+    /**
+     * Adjustments.
+     */
+    adjustments: Array<InvoiceLineItemAdjustmentResponse>;
 }
 

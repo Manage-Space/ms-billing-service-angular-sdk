@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { InvoiceV2LineItemResponseInvoice } from './invoiceV2LineItemResponseInvoice';
+import { InvoiceLineItemAdjustmentResponse } from './invoiceLineItemAdjustmentResponse';
 
 
 export interface InvoiceV2LineItemResponse { 
@@ -66,5 +67,9 @@ export interface InvoiceV2LineItemResponse {
      */
     tag: string;
     invoice: InvoiceV2LineItemResponseInvoice | null;
+    /**
+     * Adjustments.
+     */
+    adjustments: Array<InvoiceLineItemAdjustmentResponse>;
 }
 

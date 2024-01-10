@@ -19,10 +19,13 @@ export interface InvoiceV2LineItemResponseInvoice {
     invoiceStatus?: InvoiceV2LineItemResponseInvoice.InvoiceStatusEnum;
 }
 export namespace InvoiceV2LineItemResponseInvoice {
-    export type InvoiceStatusEnum = 'paid' | 'unpaid' | 'overdue';
+    export type InvoiceStatusEnum = 'due' | 'paid' | 'pending' | 'unpaid' | 'draft' | 'overdue';
     export const InvoiceStatusEnum = {
+        Due: 'due' as InvoiceStatusEnum,
         Paid: 'paid' as InvoiceStatusEnum,
+        Pending: 'pending' as InvoiceStatusEnum,
         Unpaid: 'unpaid' as InvoiceStatusEnum,
+        Draft: 'draft' as InvoiceStatusEnum,
         Overdue: 'overdue' as InvoiceStatusEnum
     };
 }

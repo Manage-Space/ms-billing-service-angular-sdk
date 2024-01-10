@@ -11,11 +11,14 @@
  */
 
 
-export type InvoiceStatus = 'paid' | 'unpaid' | 'overdue';
+export type InvoiceStatus = 'due' | 'paid' | 'pending' | 'unpaid' | 'draft' | 'overdue';
 
 export const InvoiceStatus = {
+    Due: 'due' as InvoiceStatus,
     Paid: 'paid' as InvoiceStatus,
+    Pending: 'pending' as InvoiceStatus,
     Unpaid: 'unpaid' as InvoiceStatus,
+    Draft: 'draft' as InvoiceStatus,
     Overdue: 'overdue' as InvoiceStatus
 };
 

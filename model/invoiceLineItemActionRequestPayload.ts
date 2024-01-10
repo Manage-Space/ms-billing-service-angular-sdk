@@ -11,7 +11,6 @@
  */
 import { FeeDetails } from './feeDetails';
 import { CreditDistribution } from './creditDistribution';
-import { WaiveFee } from './waiveFee';
 import { ApplyCredit } from './applyCredit';
 import { AddFee } from './addFee';
 
@@ -24,5 +23,5 @@ import { AddFee } from './addFee';
  * Action payload
  * @export
  */
-export type InvoiceLineItemActionRequestPayload = AddFee | ApplyCredit | WaiveFee;
+export type InvoiceLineItemActionRequestPayload = AddFee | ApplyCredit;
 

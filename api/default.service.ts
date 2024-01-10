@@ -196,6 +196,80 @@ export class DefaultService {
     }
 
     /**
+     * Finalize invoice
+     * Finalize invoice.
+     * @param orgId The Organization ID
+     * @param siteId The Site ID
+     * @param invoiceId Invoice ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public finalizeInvoice(orgId: string, siteId: string, invoiceId: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceByIdV2200Response>;
+    public finalizeInvoice(orgId: string, siteId: string, invoiceId: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceByIdV2200Response>>;
+    public finalizeInvoice(orgId: string, siteId: string, invoiceId: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceByIdV2200Response>>;
+    public finalizeInvoice(orgId: string, siteId: string, invoiceId: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+        if (orgId === null || orgId === undefined) {
+            throw new Error('Required parameter orgId was null or undefined when calling finalizeInvoice.');
+        }
+        if (siteId === null || siteId === undefined) {
+            throw new Error('Required parameter siteId was null or undefined when calling finalizeInvoice.');
+        }
+        if (invoiceId === null || invoiceId === undefined) {
+            throw new Error('Required parameter invoiceId was null or undefined when calling finalizeInvoice.');
+        }
+
+        let localVarHeaders = this.defaultHeaders;
+
+        let localVarCredential: string | undefined;
+        // authentication (bearer) required
+        localVarCredential = this.configuration.lookupCredential('bearer');
+        if (localVarCredential) {
+            localVarHeaders = localVarHeaders.set('Authorization', 'Bearer ' + localVarCredential);
+        }
+
+        let localVarHttpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (localVarHttpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                'application/json;v=1'
+            ];
+            localVarHttpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (localVarHttpHeaderAcceptSelected !== undefined) {
+            localVarHeaders = localVarHeaders.set('Accept', localVarHttpHeaderAcceptSelected);
+        }
+
+        let localVarHttpContext: HttpContext | undefined = options && options.context;
+        if (localVarHttpContext === undefined) {
+            localVarHttpContext = new HttpContext();
+        }
+
+
+        let responseType_: 'text' | 'json' | 'blob' = 'json';
+        if (localVarHttpHeaderAcceptSelected) {
+            if (localVarHttpHeaderAcceptSelected.startsWith('text')) {
+                responseType_ = 'text';
+            } else if (this.configuration.isJsonMime(localVarHttpHeaderAcceptSelected)) {
+                responseType_ = 'json';
+            } else {
+                responseType_ = 'blob';
+            }
+        }
+
+        let localVarPath = `/billing/orgs/${this.configuration.encodeParam({name: "orgId", value: orgId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/sites/${this.configuration.encodeParam({name: "siteId", value: siteId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/invoices/${this.configuration.encodeParam({name: "invoiceId", value: invoiceId, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/finalize`;
+        return this.httpClient.request<GetInvoiceByIdV2200Response>('post', `${this.configuration.basePath}${localVarPath}`,
+            {
+                context: localVarHttpContext,
+                responseType: <any>responseType_,
+                withCredentials: this.configuration.withCredentials,
+                headers: localVarHeaders,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
      * Get account current balance (single site).
      * Get an account current balance for a single site in an org.
      * @param orgId The Organization ID
