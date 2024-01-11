@@ -20,5 +20,9 @@ export interface CreditDistribution {
      * Credit towards the invoice line item.
      */
     creditAmount: number;
+    /**
+     * Credit notes.
+     */
+    notes?: string;
 }
 
