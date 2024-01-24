@@ -33,3 +33,4 @@ export * from './transactionSummaryResponse';
 export * from './unauthorizedError401Response';
 export * from './unauthorizedError401ResponseError';
 export * from './unpaidWithBalance';
+export * from './updateInvoiceStatusRequestDto';
