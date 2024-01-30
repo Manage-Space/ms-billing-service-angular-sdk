@@ -59,6 +59,10 @@ export interface InvoiceV2LineItemResponse {
      */
     ledgerId: string | null;
     /**
+     * Location ID
+     */
+    locationId: string | null;
+    /**
      * Sub product ID
      */
     subProductId: string | null;
