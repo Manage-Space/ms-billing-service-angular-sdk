@@ -767,16 +767,18 @@ export class DefaultService {
      * @param limit The maximum number of records to return per page.
      * @param dateFrom 
      * @param dateTo 
-     * @param accountId Account Id
+     * @param fromPrice The price to search from.
+     * @param toPrice The price to search to.
+     * @param accountId Comma-separated list of Account Id\&#39;s
      * @param invoiceStatus Comma-separated list of statuses (e.g., paid,draft)
      * @param rentalId Rental Id
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceByIdV2200Response>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceByIdV2200Response>>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceByIdV2200Response>>;
-    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, accountId?: string, invoiceStatus?: string, rentalId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, fromPrice?: number, toPrice?: number, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<GetInvoiceByIdV2200Response>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, fromPrice?: number, toPrice?: number, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpResponse<GetInvoiceByIdV2200Response>>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, fromPrice?: number, toPrice?: number, accountId?: string, invoiceStatus?: string, rentalId?: string, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<HttpEvent<GetInvoiceByIdV2200Response>>;
+    public getInvoicesV2(orgId: string, siteId: string, offset?: number, limit?: number, dateFrom?: string, dateTo?: string, fromPrice?: number, toPrice?: number, accountId?: string, invoiceStatus?: string, rentalId?: string, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: 'application/json;v&#x3D;1', context?: HttpContext}): Observable<any> {
         if (orgId === null || orgId === undefined) {
             throw new Error('Required parameter orgId was null or undefined when calling getInvoicesV2.');
         }
@@ -800,6 +802,14 @@ export class DefaultService {
         if (dateTo !== undefined && dateTo !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
             <any>dateTo, 'dateTo');
+        }
+        if (fromPrice !== undefined && fromPrice !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>fromPrice, 'fromPrice');
+        }
+        if (toPrice !== undefined && toPrice !== null) {
+          localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
+            <any>toPrice, 'toPrice');
         }
         if (accountId !== undefined && accountId !== null) {
           localVarQueryParameters = this.addToHttpParams(localVarQueryParameters,
